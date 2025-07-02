@@ -60,8 +60,33 @@ class SortedAnagram:
 class SortedAnagramNew:
      def isAnagram(self,s:str,t:str)->bool:
           return sorted(s)==sorted(t)
+
+
+#Most optimal solution , Time Complexity O(n), Space Complexity O(n)
+
+class OptimalSolution:
+     def isAnagram(self, s:str,t:str)->bool:
+          t_map= {} #Create a new hashmap for t
+          s_map= {} #Create a new hashmap for s 
+
+          for char in s:
+               s_map[char] = s_map.get(char,0)+1 # Define the s hashmap by iterating over s and updating the count
+               
+          for char in t:
+               t_map[char] = t_map.get(char,0)+1 # Define the s hashmap by iterating over t and updating the count 
+               
+          return s_map == t_map # Compare if both hashmaps are equal 
+
+        
+               
+            
+           
+        
+               
+
+          
      
-     
+
 # Entry point for running test cases
 
 if __name__ == "__main__":
