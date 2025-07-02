@@ -93,6 +93,7 @@ if __name__ == "__main__":
     solution1 = BruteForce()
     solution2 = SortedAnagram()
     solution3 = SortedAnagramNew()
+    solution4 = OptimalSolution()
 
 
 test_cases = [
@@ -110,8 +111,10 @@ for i, (s, t, expected) in enumerate(test_cases):
         result1 = solution1.isAnagram(s, t)
         result2 = solution2.isAnagram(s, t)
         result3 = solution3.isAnagram(s, t)
+        result4 = solution4.isAnagram(s, t)
         print(f"Test Case {i+1}: s='{s}', t='{t}' | Expected: {expected} | Result: {result1} | {'✅' if result1 == expected else '❌'}")
         print(f"Test Case {i+1}: s='{s}', t='{t}' | Expected: {expected} | Result: {result2} | {'✅' if result2 == expected else '❌'}")
         print(f"Test Case {i+1}: s='{s}', t='{t}' | Expected: {expected} | Result: {result3} | {'✅' if result3 == expected else '❌'}")
+        print(f"Test Case {i+1}: s='{s}', t='{t}' | Expected: {expected} | Result: {result4} | {'✅' if result4 == expected else '❌'}")
                                 
 
