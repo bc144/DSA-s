@@ -35,12 +35,32 @@ class BruteForce:
                         t_list.remove(j) # If there is a coincidence, remove the element from the t list to avoid entering a loop
                         found = True   # Set the found variable to True, as the coincidence has been found
                         break
-                    if not found:
+                if not found:
                         return False #Not found
         
         
         return True
 
-      
+
+
+# Entry point for running test cases
+
+if __name__ == "__main__":
+    solution1 = BruteForce()
+
+test_cases = [
+        ("racecar", "carrace", True),
+        ("jar", "jam", False),
+        ("", "", True),
+        ("abcd", "abce", False),
+        ("aabbcc", "abccba", True),
+        ("aabb", "aab", False),
+        ("x", "x", True),
+        ("x", "y", False),
+    ]
+
+for i, (s, t, expected) in enumerate(test_cases):
+        result1 = solution1.validAnagram(s, t)
+        print(f"Test Case {i+1}: s='{s}', t='{t}' | Expected: {expected} | Result: {result1} | {'✅' if result1 == expected else '❌'}")
                     
 
