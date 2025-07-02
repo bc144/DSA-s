@@ -41,7 +41,7 @@ class BruteForce:
         
         return True
     
-#Sorting Solution
+#Sorting Solution, Time Complexity O(n log n) due to the sorting method of the strings, Space Complexity O(n)##
 
 class SortedAnagram:
      def isAnagram(self,s:str,t:str)->bool:
@@ -55,11 +55,21 @@ class SortedAnagram:
 
 
 
+#Sorting Solution but optimized, removed redundant condition, Time Complexity O(n log n), Space Complexity O(n)
+
+class SortedAnagramNew:
+     def isAnagram(self,s:str,t:str)->bool:
+          return sorted(s)==sorted(t)
+     
+     
 # Entry point for running test cases
 
 if __name__ == "__main__":
     solution1 = BruteForce()
     solution2 = SortedAnagram()
+    solution3 = SortedAnagramNew()
+
+
 test_cases = [
         ("racecar", "carrace", True),
         ("jar", "jam", False),
@@ -74,7 +84,9 @@ test_cases = [
 for i, (s, t, expected) in enumerate(test_cases):
         result1 = solution1.isAnagram(s, t)
         result2 = solution2.isAnagram(s, t)
+        result3 = solution3.isAnagram(s, t)
         print(f"Test Case {i+1}: s='{s}', t='{t}' | Expected: {expected} | Result: {result1} | {'✅' if result1 == expected else '❌'}")
         print(f"Test Case {i+1}: s='{s}', t='{t}' | Expected: {expected} | Result: {result2} | {'✅' if result2 == expected else '❌'}")
-                    
+        print(f"Test Case {i+1}: s='{s}', t='{t}' | Expected: {expected} | Result: {result3} | {'✅' if result3 == expected else '❌'}")
+                                
 
