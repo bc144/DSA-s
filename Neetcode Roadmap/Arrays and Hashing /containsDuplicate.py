@@ -29,5 +29,26 @@ class BruteForce:
                     return True
     
         return False  #No duplicates
+    
+
+
            
         
+# Entry point for running test cases
+if __name__ == "__main__":
+    solution1 = BruteForce()
+
+    # Test cases
+    test_cases = [
+        ([1, 2, 3, 4], False),
+        ([1, 2, 3, 1], True),
+        ([99], False),
+        ([1, 1, 1, 1], True),
+        ([], False),
+        ([3, 4, 5, 3, 2, 1], True)
+    ]
+
+    # Running and printing results
+    for i, (input_list, expected) in enumerate(test_cases):
+        result = solution1.hasDuplicate(input_list)
+        print(f"Test Case {i + 1}: Input: {input_list} | Expected: {expected} | Result: {result} | {'✅' if result == expected else '❌'}")
