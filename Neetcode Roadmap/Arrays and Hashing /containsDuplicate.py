@@ -58,7 +58,7 @@ class OptimalSolution:
 if __name__ == "__main__":
     solution1 = BruteForce()
     solution2 = SortingList()
-
+    solution3 = OptimalSolution()
     # Test cases
     test_cases = [
         ([1, 2, 3, 4], False),
@@ -73,5 +73,7 @@ if __name__ == "__main__":
     for i, (input_list, expected) in enumerate(test_cases):
         result1 = solution1.hasDuplicate(input_list)
         result2 = solution2.hasDuplicate(input_list)
+        result3 = solution3.hasDuplicate(input_list)
         print(f"Test Case {i + 1}: Input: {input_list} | Expected: {expected} | Result: {result1} | {'✅' if result1 == expected else '❌'}")
         print(f"Test Case {i + 1}: Input: {input_list} | Expected: {expected} | Result: {result2} | {'✅' if result2 == expected else '❌'}")
+        print(f"Test Case {i + 1}: Input: {input_list} | Expected: {expected} | Result: {result3} | {'✅' if result3 == expected else '❌'}")
