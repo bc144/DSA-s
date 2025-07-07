@@ -35,9 +35,11 @@ Constraints:
 '''
 
 
-#Brute Force solution 
+ 
 
 from typing import List
+
+#Brute Force solution
 
 class BruteForce:
     def twoSum(self,nums:List[int],target:int)->List[int]:
@@ -49,11 +51,42 @@ class BruteForce:
     
 
 
+#Sorting solution, not the optimal, not even a bit, test case to proce why this approach does not work.
+
+class SortingSolution:
+    def twoSum(self, nums:List[int],target:int)->List[int]:
+        nums_with_index= [(num,idx) for idx, num in enumerate(nums)] # Creates a new list of tuples, where now the tuple has the value on the list and its index
+        nums_with_index.sort() # Sort the new list but keeping the original indexes
+        left = 0 # Create a left pointer
+        right = len(nums_with_index)-1 # Create a right pointer 
+        
+        while left < right:
+            left_num = nums_with_index[left][0]  
+            right_num = nums_with_index[right][0]
+            current_sum= left_num + right_num
+
+            if current_sum == target:
+                return  [nums_with_index[left][1], nums_with_index[right][1]]
+            elif current_sum< target:
+                left += 1
+            else:
+                right -= 1
+            
+        return []
+            
+            
+
+
+    
+
+
 
 
     # Entry point for running test cases
 if __name__ == "__main__":
-    solution = BruteForce()
+    solution1 = BruteForce()
+    solution2 = SortingSolution()
+
 
     # Test cases: each is (input_list, target, expected_output)
     test_cases = [
@@ -67,6 +100,11 @@ if __name__ == "__main__":
 
     # Running and printing results
     for i, (nums, target, expected) in enumerate(test_cases):
-        result = solution.twoSum(nums, target)
-        is_correct = result == expected or result == expected[::-1]  # Accept reverse order
-        print(f"Test Case {i + 1}: nums={nums}, target={target} | Expected: {expected} | Result: {result} | {'✅' if is_correct else '❌'}")
+        result1 = solution1.twoSum(nums, target)
+        result2 = solution2.twoSum(nums,target)
+
+        is_correct = result1 == expected or result1 == expected[::-1]  # Accept reverse order
+        print(f"Test Case {i + 1}: nums={nums}, target={target} | Expected: {expected} | Result: {result1} | {'✅' if is_correct else '❌'}")
+        is_correct = result2 == expected or result2 == expected[::-1]  # Accept reverse order
+        print(f"Test Case {i + 1}: nums={nums}, target={target} | Expected: {expected} | Result: {result2} | {'✅' if is_correct else '❌'}")
+
