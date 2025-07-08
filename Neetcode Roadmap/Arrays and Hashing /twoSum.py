@@ -39,7 +39,7 @@ Constraints:
 
 from typing import List
 
-#Brute Force solution
+#Brute Force solution  Time Complexity O(n^2)  Space Complexity O(1)
 
 class BruteForce:
     def twoSum(self,nums:List[int],target:int)->List[int]:
@@ -51,7 +51,7 @@ class BruteForce:
     
 
 
-#Sorting solution, not the optimal, not even a bit, test case to proce why this approach does not work.
+#Sorting solution, not the optimal, not even a bit, test case to proce why this approach does not work. Using two pointers as the solution.  # Time complexity O (n log n) #Space Complexity O(n)
 
 class SortingSolution:
     def twoSum(self, nums:List[int],target:int)->List[int]:
@@ -73,7 +73,22 @@ class SortingSolution:
                 right -= 1
             
         return []
-            
+    
+#Most Optimal Solution : Hashmap impl, Time Complexity O(n) Space Complexity (n) due to the fact that the biggest the hashmap can be is the size of the list
+
+class HashmapSolution:
+    def twoSum(self,nums:List[int],target:int)->List[int]:
+        hashmap = {}    # Create an empty hashmap to store value -> index
+        remainder = 0   # Variable to hold the difference between target and current value 
+        for i ,num in enumerate(nums):  #Iterate over indices and values in the list
+            remainder = target - num    # Calculate the complement needed to reach the target
+            if remainder in hashmap:   # If the complement is already in the hashmap
+               return [hashmap[remainder],i] # Return indices of the complement and current value
+ 
+            hashmap[num] = i         # Store the current number and its index in the hashmap
+        
+        return []                      #Return an empty list if there are no matches 
+
             
 
 
@@ -86,7 +101,7 @@ class SortingSolution:
 if __name__ == "__main__":
     solution1 = BruteForce()
     solution2 = SortingSolution()
-
+    solution3 = HashmapSolution()
 
     # Test cases: each is (input_list, target, expected_output)
     test_cases = [
@@ -102,9 +117,13 @@ if __name__ == "__main__":
     for i, (nums, target, expected) in enumerate(test_cases):
         result1 = solution1.twoSum(nums, target)
         result2 = solution2.twoSum(nums,target)
+        result3 = solution3.twoSum(nums,target)
 
         is_correct = result1 == expected or result1 == expected[::-1]  # Accept reverse order
         print(f"Test Case {i + 1}: nums={nums}, target={target} | Expected: {expected} | Result: {result1} | {'✅' if is_correct else '❌'}")
         is_correct = result2 == expected or result2 == expected[::-1]  # Accept reverse order
         print(f"Test Case {i + 1}: nums={nums}, target={target} | Expected: {expected} | Result: {result2} | {'✅' if is_correct else '❌'}")
+        is_correct = result3 == expected or result3 == expected[::-1]  # Accept reverse order
+        print(f"Test Case {i + 1}: nums={nums}, target={target} | Expected: {expected} | Result: {result3} | {'✅' if is_correct else '❌'}")
+
 
